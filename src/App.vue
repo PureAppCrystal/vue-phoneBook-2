@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-      <Header/>
+      <Header
+        v-bind:formState="formState"
+      />
       <Search/>
       <PhoneList/>
       <button @click='getCurrentUrl'> current Url </button>
@@ -14,10 +16,22 @@ import PhoneList from './components/PhoneList'
 
 export default {
   name: 'app',
+  data() {
+    return {
+      formState: 'list'
+    }
+  },
   methods: {
     getCurrentUrl: function() {
       console.log("current url : ", this.$route.path);
     }
+  },
+  created() {
+    console.log("====== app created ======")
+    console.log("current url : ", this.$route.path);
+    let path = this.$route.path
+    path = path.substring(1, path.length)
+    console.log("path : ", path)
   },
   components: {
     Header,
