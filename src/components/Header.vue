@@ -51,6 +51,11 @@ export default {
                 default: return 'unknown'
             }
         },
+    },
+    methods: {
+        onRight: function() {
+            this.$router.push('/insert')
+        }
     }
  
 }

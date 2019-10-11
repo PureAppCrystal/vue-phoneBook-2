@@ -28,10 +28,25 @@ export default {
   },
   created() {
     console.log("====== app created ======")
-    console.log("current url : ", this.$route.path);
     let path = this.$route.path
-    path = path.substring(1, path.length)
-    console.log("path : ", path)
+
+    switch (path) {
+      case '/':
+      case '/list':
+        return this.formState = 'list';
+        break;
+      case '/select':
+        return this.formState = 'select';
+        break;
+      case '/insert':
+        return this.formState = 'insert';
+        break;
+      case '/update':
+        return this.formState = 'update';
+        break;
+      default:
+        return this.formState = 'list'
+    }
   },
   components: {
     Header,
